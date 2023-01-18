@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace herramientas_PHP\www\app;
+namespace www\util;
 include_once("./autoload.php");
-//include_once("VideoclubException.php");
+//include_once("PasteleriaException.php");
 
-class CupoSuperadoException extends VideoclubException{
+class DulceNoEncontradoException extends PasteleriaException{
     
     public function __construct(
-        $message = "</br>El cupo de alquileres ha sido superado</br>",
-        $code = 2
+        $message = "</br>No se pudo encontrar el dulce</br>",
+        $code = 4
     )
     {
         parent::__construct($message, $code);

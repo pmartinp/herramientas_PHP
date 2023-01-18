@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace herramientas_PHP\www\app;
+namespace www\app;
 include_once("./autoload.php");
 //include_once("Resumible.php");
 
@@ -10,7 +10,6 @@ abstract class Dulce implements Resumible
 {
 
         private const IVA = 21;
-        public bool $alquilado = false;
 
         public function __construct(
                 public string $nombre,

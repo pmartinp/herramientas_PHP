@@ -2,17 +2,15 @@
 
 declare(strict_types=1);
 
-namespace herramientas_PHP\www\app;
+namespace www\app;
 
-use herramientas_PHP\www\util\CupoSuperadoException;
-use herramientas_PHP\www\util\SoporteNoEncontradoException;
-use herramientas_PHP\www\util\SoporteYaAlquiladoException;
+use www\util\DulceNoCompradoException;
+use www\util\DulceNoEncontradoException;
 
 class Cliente
 {
 
     private $dulcesComprados = [];
-    private int $numDulcesComprados = 0;
     public string $user;
 
     public function __construct(
@@ -53,17 +51,10 @@ class Cliente
     }
     /**
      * Get the value of dulcesComprados
-     */ 
+     */
     public function getDulcesComprados()
     {
         return $this->dulcesComprados;
-    }
-    /**
-     * Get the value of numDulcesComprados
-     */ 
-    public function getNumDulcesComprados()
-    {
-        return $this->numDulcesComprados;
     }
     /**
      * Set the value of user
@@ -77,56 +68,46 @@ class Cliente
         return $this;
     }
     /**
-     * Set the value of numSoportesAlquilados
+     * Set the value of numPedidosEfectuados
      *
      * @return  self
      */
-    public function setNumSoportesAlquilados($numSoportesAlquilados)
+    public function setNumPedidosEfectuados($numPedidosEfectuados)
     {
-        if ($numSoportesAlquilados < 0 || $numSoportesAlquilados > $this->getMaxAlquilerConcurrente()) {
-            throw new CupoSuperadoException();
-        } else {
-            $this->numSoportesAlquilados = $numSoportesAlquilados;
-            return $this;
-        }
+        $this->numPedidosEfectuados = $numPedidosEfectuados;
+
+        return $this;
     }
 
-    // comprueba si es posible alquilar un soporte y si lo es lo añade al array soportesAlquilados (lo alquila)
-    public function comprar(Dulce $d): bool
+    // comprueba si es posible compprar un dulce y si lo es lo añade al array dulcesComprados (lo compra)
+    public function comprar(Dulce $d)
     {
-        if (!$this->tieneAlquilado($s)) {
-            $this->setNumSoportesAlquilados($this->numSoportesAlquilados + 1);
-            $this->soportesAlquilados[] = $s;
-            echo "<br>Alquiler realizado con éxito";
-
-            $s->alquilado = true;
-            return $this;
-        } else {
-            throw new SoporteYaAlquiladoException();
-        }
+        $this->setNumPedidosEfectuados($this->getNumPedidosEfectuados() + 1);
+        $this->dulcesComprados[] = $d;
+        echo "<br>Dulce comprado con éxito";
+        return $this;
     }
 
-    // comprueba si el parámetro $s está alquilado o no
-    public function tieneAlquilado(Soporte $s): bool
+    // comprueba si el parámetro $d está comprado o no
+    public function listaDeDulces(Dulce $d): bool
     {
-        return in_array($s, $this->soportesAlquilados);
+        return in_array($d, $this->getDulcesComprados());
     }
 
-    //
-    public function devolver(Soporte $s)
+    // Realiza una valoración del dulce comprado
+    public function valorar(Dulce $d, String $c)
     {
-        echo "<br>";
-        if ($this->tieneAlquilado($s)) {
-            unset($this->soportesAlquilados[array_search($s, $this->soportesAlquilados)]);
-            $this->setNumSoportesAlquilados($this->numSoportesAlquilados--);
-            echo "Soporte devuelto con éxito";
+        if ($this->listaDeDulces($d)) {
+
+            echo $c;
         } else {
-            echo "El soporte no estaba alquilado";
+            throw new DulceNoCompradoException();
         }
         return $this;
     }
 
-    public function listaDeDulces()
+    // Lista los dulces, con sus características que ha comprado el cliente
+    public function listarPedidos()
     {
         echo "<br>";
         foreach ($this->getDulcesComprados() as $obj) {

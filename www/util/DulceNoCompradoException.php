@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace herramientas_PHP\www\app;
+namespace www\util;
 include_once("./autoload.php");
-//include_once("VideoclubException.php");
+//include_once("PasteleriaException.php");
 
-class SoporteNoEncontradoException extends VideoclubException{
+class DulceNoCompradoException extends PasteleriaException{
     
     public function __construct(
-        $message = "</br>No se ha podido encontrar el soporte</br>",
+        $message = "</br>El dulce no ha sido comprado</br>",
         $code = 3
     )
     {

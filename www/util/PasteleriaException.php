@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace herramientas_PHP\www\app;
+namespace www\util;
 
 use Exception;
 
-class VideoclubException extends Exception{
+class PasteleriaException extends Exception{
 
     public function __construct(
         $message,

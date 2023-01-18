@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace herramientas_PHP\www\app;
+namespace www\util;
 include_once("./autoload.php");
-//include_once("VideoclubException.php");
+//include_once("PasteleriaException.php");
 
-class ClienteNoEncontradoException extends VideoclubException{
+class ClienteNoEncontradoException extends PasteleriaException{
     
     public function __construct(
         $message = "</br>No se pudo encontrar al cliente</br>",

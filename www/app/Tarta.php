@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace herramientas_PHP\www\app;
+namespace www\app;
 
 include_once("./autoload.php");
 //include_once("Dulce.php");
@@ -15,8 +15,8 @@ class Tarta extends Dulce
         int $numero,
         float $precio,
         private int $numPisos,
+        private $rellenos = [],
         private int $maxNumComensales,
-        private $rellenos = [$numPisos],
         private int $minNumComensales = 2
     ) {
         parent::__construct($nombre, $numero, $precio);

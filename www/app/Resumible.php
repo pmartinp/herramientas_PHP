@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace herramientas_PHP\www\app;
+namespace www\app;
 
 interface Resumible
 {

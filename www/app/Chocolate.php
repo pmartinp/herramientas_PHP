@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace herramientas_PHP\www\app;
+namespace www\app;
 
 include_once("./autoload.php");
 //include_once("Dulce.php");
 
-class Disco extends Dulce
+class Chocolate extends Dulce
 {
 
     public function __construct(
