@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace www\app;
+namespace src\app;
 
-use www\util\DulceNoCompradoException;
-use www\util\DulceNoEncontradoException;
+use src\util\DulceNoCompradoException;
+use src\util\DulceNoEncontradoException;
 
 class Cliente
 {

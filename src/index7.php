@@ -1,7 +1,7 @@
 <?php
 // Archivo para probar el funcionamiento de login.php
 include "autoload.php";
-use www\app\Pasteleria;
+use src\app\Pasteleria;
 
 $ps = new Pasteleria("Severo 8A");
 

@@ -1,7 +1,7 @@
 <?php
 
 include "autoload.php";
-use www\app\Bollo;
+use src\app\Bollo;
 
 /*
 $soporte1 = new Soporte("Tenet", 22, 3);

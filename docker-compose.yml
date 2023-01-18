@@ -1,11 +1,11 @@
 version: "3.1"
 services:
-    www:
+    src:
         image: php:8.0-apache
         ports: 
             - "80:80"
         volumes:
-            - ./www:/var/www
+            - ./src:/var/src
         networks:
             - default
 volumes:

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace www\util;
+namespace src\util;
 
 use Exception;
 

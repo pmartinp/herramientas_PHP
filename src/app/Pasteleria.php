@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace www\app;
+namespace src\app;
 
-use www\util\DulceNoCompradoException;
-use www\util\DulceNoEncontradoException;
-use www\util\ClienteNoEncontradoException;
+use src\util\DulceNoCompradoException;
+use src\util\DulceNoEncontradoException;
+use src\util\ClienteNoEncontradoException;
 
 include_once("./autoload.php");
 //include_once("Bollo.php");
