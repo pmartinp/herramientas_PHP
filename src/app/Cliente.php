@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace src\app;
 
+use src\util\LogFactory;
+use Monolog\Logger;
 use src\util\DulceNoCompradoException;
-use src\util\DulceNoEncontradoException;
 
 class Cliente
 {
 
+    private Logger $log;
     private $dulcesComprados = [];
     public string $user;
 
@@ -19,6 +21,7 @@ class Cliente
         private int $numPedidosEfectuados = 0,
         private string $password = "usuario"
     ) {
+        $this->log = LogFactory::getLogger();
         $this->setUser();
     }
 
@@ -101,6 +104,7 @@ class Cliente
 
             echo $c;
         } else {
+            $this->log->warning("Dulce no encontrado", [$d->nombre]);
             throw new DulceNoCompradoException();
         }
         return $this;

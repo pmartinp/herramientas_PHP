@@ -1,5 +1,6 @@
 <?php
 // Archivo para probar métodos de la clase videoclub
+include __DIR__."/vendor/autoload.php";
 include "autoload.php";
 use src\app\Pasteleria;
 
@@ -21,8 +22,10 @@ $ps->incluirCliente("Pablo Picasso", 6);
 echo $ps->listarClientes();
 
 // para poder probarlo haría falta cambiar a "public" la propiedad $productos de la clase "Pasteleria"
-$ps->comprarClienteProducto(49, 0)->comprarClienteProducto(1, 2)->comprarClienteProducto(1, 2);
+$ps->comprarClienteProducto(0, 0)->comprarClienteProducto(1, 2)->comprarClienteProducto(1, 2);
 
 echo $ps->listarClientes();
 
 echo $ps->getClientes()[0]->listarPedidos();
+
+$ps->getClientes()[0]->valorar($ps->getProductos()[5], "Está de arte");
