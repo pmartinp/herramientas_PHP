@@ -9,7 +9,7 @@ include_once("./autoload.php");
 class ClienteNoEncontradoException extends PasteleriaException{
     
     public function __construct(
-        $message = "</br>No se pudo encontrar al cliente</br>",
+        $message = "</br>No se pudo encontrar al cliente",
         $code = 1
     )
     {

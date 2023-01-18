@@ -21,7 +21,7 @@ $ps->incluirCliente("Pablo Picasso", 6);
 echo $ps->listarClientes();
 
 // para poder probarlo haría falta cambiar a "public" la propiedad $productos de la clase "Pasteleria"
-$ps->comprarClienteProducto(0, 0)->comprarClienteProducto(1, 4)->comprarClienteProducto(1, 2);
+$ps->comprarClienteProducto(49, 0)->comprarClienteProducto(1, 2)->comprarClienteProducto(1, 2);
 
 echo $ps->listarClientes();
 

@@ -9,7 +9,7 @@ include_once("./autoload.php");
 class DulceNoCompradoException extends PasteleriaException{
     
     public function __construct(
-        $message = "</br>El dulce no ha sido comprado</br>",
+        $message = "</br>El dulce no ha sido comprado",
         $code = 3
     )
     {

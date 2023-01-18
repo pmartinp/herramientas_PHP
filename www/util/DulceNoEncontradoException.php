@@ -9,7 +9,7 @@ include_once("./autoload.php");
 class DulceNoEncontradoException extends PasteleriaException{
     
     public function __construct(
-        $message = "</br>No se pudo encontrar el dulce</br>",
+        $message = "</br>No se pudo encontrar el dulce",
         $code = 4
     )
     {

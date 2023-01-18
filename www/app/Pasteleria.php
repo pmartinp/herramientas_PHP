@@ -113,24 +113,25 @@ class Pasteleria
     public function comprarClienteProducto(int $numeroCliente, int $numeroDulce)
     {
         $saveCliente = "";
+        $dulce = "";
         try {
             // recorro el array "$clientes"
             foreach ($this->clientes as $key => $obj) {
                 //si el número de algún cliente coincide con el parámetro "$numCliente" recorro el array "$productos"
                 if ($obj->getNumero() == $numeroCliente) {
                     $saveCliente = $obj; // Asigno aquí un cliente a esta variable para poder lanzar posteriormente ClienteNoEncontradoException
-                    try {
                         // recorro el array "$productos"
                         foreach ($this->productos as $value => $prod) {
                             // si el parámetro "$numeroDulce" coincide con algún número de productos el cliente comprará el dulce
                             if ($prod->getNumero() == $numeroDulce) {
-                                $saveCliente->comprar($prod);
+                                $dulce = $prod;
+                                $saveCliente->comprar($dulce);
                                 return $this;
                             }
                         }
-                    } catch (DulceNoEncontradoException $e) {
-                        echo $e->getMessage();
-                    }
+                        if($dulce == null){
+                            throw new DulceNoEncontradoException;
+                        }
                 }
             }
             // en el caso de que "$saveCliente" esté vacío lanzaremos la excepción
@@ -138,6 +139,8 @@ class Pasteleria
                 throw new ClienteNoEncontradoException();
             }
         } catch (ClienteNoEncontradoException $e) {
+            echo $e->getMessage();
+        } catch (DulceNoEncontradoException $e) {
             echo $e->getMessage();
         }
         return $this;
