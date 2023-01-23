@@ -130,7 +130,7 @@ class Pasteleria
                             }
                         }
                         if($dulce == null){
-                            throw new DulceNoEncontradoException;
+                            throw new DulceNoEncontradoException();
                         }
                 }
             }
