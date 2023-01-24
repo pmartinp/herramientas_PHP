@@ -26,9 +26,6 @@ class PasteleriaTest extends TestCase
         $ps = new Pasteleria("Severo 8A");
 
         $ps->incluirTarta("Tarta la aweli", 19.99, 3, ["chocolate", "vainilla", "natilla"], 5);
-        $ps->incluirTarta("Tarta de queso", 12.30, 2, ["queso", "fresa"], 3);
-        $ps->incluirChocolate("Negro", 8.25, 95, 500);
-        $ps->incluirBollo("Manolito", 4.83, "Pistacho");
 
         $ps->incluirCliente("Amancio Ortega");
         $ps->comprarClienteProducto(0, 0);
