@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace src\app;
 
+use src\util\LogFactory;
+use Monolog\Logger;
 use src\util\DulceNoCompradoException;
 use src\util\DulceNoEncontradoException;
 use src\util\ClienteNoEncontradoException;
@@ -16,13 +18,14 @@ include_once("./autoload.php");
 
 class Pasteleria
 {
-
+    private Logger $log;
     private $productos = [];
     private $clientes = [];
 
     public function __construct(
         private string $nombre
     ) {
+        $this->log = LogFactory::getLogger();
     }
 
     /**
@@ -57,6 +60,7 @@ class Pasteleria
     // incluye productos en el array $productos
     private function incluirProducto(Dulce $d)
     {
+        $this->log->info("Producto incluido", [$d->nombre]);
         $this->productos[] = $d;
     }
 
@@ -109,6 +113,7 @@ class Pasteleria
         return $str;
     }
 
+    
     // relaciona el método "comprar" de la clase cliente con un objeto heradado de dulce del array "$productos"
     public function comprarClienteProducto(int $numeroCliente, int $numeroDulce)
     {
@@ -130,12 +135,14 @@ class Pasteleria
                             }
                         }
                         if($dulce == null){
+                            $this->log->error("Dulce no encontrado", [$numeroDulce]);
                             throw new DulceNoEncontradoException();
                         }
                 }
             }
             // en el caso de que "$saveCliente" esté vacío lanzaremos la excepción
             if ($saveCliente == "") {
+                $this->log->critical("Cliente no encontrado", [$numeroCliente]);
                 throw new ClienteNoEncontradoException();
             }
         } catch (ClienteNoEncontradoException $e) {

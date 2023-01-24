@@ -11,7 +11,6 @@ class PasteleriaTest extends TestCase
     public function testincluirProductos(){
         $ps = new Pasteleria("Severo 8A");
 
-        //voy a incluir unos cuantos soportes de prueba
         $ps->incluirTarta("Tarta la aweli", 19.99, 3, ["chocolate", "vainilla", "natilla"], 5);
         $ps->incluirTarta("Tarta de queso", 12.30, 2, ["queso", "fresa"], 3);
         $ps->incluirChocolate("Negro", 8.25, 95, 500);
@@ -20,12 +19,20 @@ class PasteleriaTest extends TestCase
         $ps->incluirBollo("Suso", 1.5, "Crema");
         
         $this->assertSame(6, $ps->getNumProductos());
+        $this->assertNotSame(20, $ps->getNumProductos());        
+    }
 
-        echo $ps->listarProductos();
-        //voy a crear algunos clientes
+    public function testComprar(){
+        $ps = new Pasteleria("Severo 8A");
+
+        $ps->incluirTarta("Tarta la aweli", 19.99, 3, ["chocolate", "vainilla", "natilla"], 5);
+        $ps->incluirTarta("Tarta de queso", 12.30, 2, ["queso", "fresa"], 3);
+        $ps->incluirChocolate("Negro", 8.25, 95, 500);
+        $ps->incluirBollo("Manolito", 4.83, "Pistacho");
+
         $ps->incluirCliente("Amancio Ortega");
-        $ps->incluirCliente("Pablo Picasso", 6);
-
+        $ps->comprarClienteProducto(0, 0);
         
+        $this->assertSame("Tarta la aweli", $ps->getClientes()[0]->getDulcesComprados()[0]->nombre);       
     }
 }

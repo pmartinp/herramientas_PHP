@@ -104,7 +104,7 @@ class Cliente
 
             echo $c;
         } else {
-            $this->log->warning("Dulce no encontrado", [$d->nombre]);
+            $this->log->warning("Dulce no comprado", [$d->nombre]);
             throw new DulceNoCompradoException();
         }
         return $this;
